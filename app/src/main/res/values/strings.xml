@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CurrencyConvertorAndroid</string>
+    <string name="unexpected_error_occurred">An unexpected error occurred!</string>
+    <string name="file_not_error_occurred">File not found!</string>
+    <string name="unable_to_parse_error_occurred">Unable to parse file!</string>
 </resources>
