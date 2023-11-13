@@ -2,7 +2,6 @@ package com.shahroze.currencyconvertorandroid.data.localdatasource.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import androidx.room.Update
 import com.shahroze.currencyconvertorandroid.common.base.BaseDao
 import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateDto
 
@@ -13,12 +12,10 @@ interface ExchangeRateDao : BaseDao<ExchangeRateDto> {
     ): List<ExchangeRateDto>
 
     @Query("SELECT * FROM exchange_rate WHERE selected = 1")
-    fun getSelectedExchangeRates(
+    fun getFavoriteExchangeRates(
     ): List<ExchangeRateDto>
 
     @Query("DELETE FROM exchange_rate")
     fun deleteAll(): Int
 
-    @Update
-    override fun update(exchangeRateDto: ExchangeRateDto)
 }

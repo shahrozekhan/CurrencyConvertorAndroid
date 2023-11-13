@@ -8,6 +8,7 @@ import com.shahroze.currencyconvertorandroid.common.base.Resource
 import com.shahroze.currencyconvertorandroid.common.enums.TimeStampState
 import com.shahroze.currencyconvertorandroid.common.utils.TimeStampUtils
 import com.shahroze.currencyconvertorandroid.data.localdatasource.preferences.AppPreferences
+import com.shahroze.currencyconvertorandroid.di.modules.Default
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
 import com.shahroze.currencyconvertorandroid.domain.model.appDefaultExchangeRate
 import com.shahroze.currencyconvertorandroid.domain.usecases.ConvertExchangeRateUseCase
@@ -15,7 +16,7 @@ import com.shahroze.currencyconvertorandroid.domain.usecases.GetFavoriteExchange
 import com.shahroze.currencyconvertorandroid.domain.usecases.LoadExchangeRateUsesCase
 import com.shahroze.currencyconvertorandroid.domain.usecases.MarkExchangeRateToFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
@@ -28,8 +29,9 @@ class ExchangeRateViewModel @Inject constructor(
     private val appPreferences: AppPreferences,
     private val loadExchangeRateUsesCase: LoadExchangeRateUsesCase,
     private val markExchangeRateToFavoriteUseCase: MarkExchangeRateToFavoriteUseCase,
-    private val getFavoriteExchangeRateUseCase: GetFavoriteExchangeRateUseCase,
-    private val convertExchangeRateUseCase: ConvertExchangeRateUseCase
+    getFavoriteExchangeRateUseCase: GetFavoriteExchangeRateUseCase,
+    private val convertExchangeRateUseCase: ConvertExchangeRateUseCase,
+    @Default private val defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _mutableExchangeRateViewState = mutableStateOf(ExchangeRateScreenState())
@@ -61,7 +63,7 @@ class ExchangeRateViewModel @Inject constructor(
                     markExchangeRateToFavoriteUseCase(event.value)
                     val mutableFavoriteCurrencyList =
                         exchangeRateViewState.value.favoriteCurrencies?.toMutableList()
-                    withContext(Dispatchers.Default) {
+                    withContext(defaultDispatcher) {
                         if (mutableFavoriteCurrencyList?.filter { event.value == it }
                                 .isNullOrEmpty()) {
                             mutableFavoriteCurrencyList?.add(event.value)

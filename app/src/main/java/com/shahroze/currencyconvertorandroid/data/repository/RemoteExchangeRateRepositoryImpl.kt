@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.remote.repository
+package com.shahroze.currencyconvertorandroid.data.repository
 
 import com.shahroze.currencyconvertorandroid.data.remote.getway.ExchangeRateGateWay
 import com.shahroze.currencyconvertorandroid.data.remote.helper.ServiceHelper

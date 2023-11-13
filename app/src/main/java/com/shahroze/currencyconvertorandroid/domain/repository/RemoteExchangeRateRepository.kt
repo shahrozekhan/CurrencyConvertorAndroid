@@ -6,5 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface RemoteExchangeRateRepository {
     fun getExchangeRate(): Flow<RemoteResource<ExchangeRateResponseDto>>
+
     fun getSymbols(): Flow<RemoteResource<ExchangeRateResponseDto>>
 }
