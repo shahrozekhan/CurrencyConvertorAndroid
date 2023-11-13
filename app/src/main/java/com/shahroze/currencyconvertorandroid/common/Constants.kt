@@ -8,6 +8,8 @@ object Constants {
 
     object ExchangeRateConstants{
         const val DEFAULT_CURRENCY = "EUR"
+        const val DEFAULT_CURRENCY_NAME = "Euro"
+        const val DEFAULT_CURRENCY_RATE = 1.0
     }
 
     const val UTF_8 = "UTF-8"

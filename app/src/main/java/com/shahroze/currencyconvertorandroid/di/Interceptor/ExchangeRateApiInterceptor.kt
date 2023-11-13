@@ -2,7 +2,7 @@ package com.shahroze.currencyconvertorandroid.di.Interceptor
 
 import com.shahroze.currencyconvertorandroid.BuildConfig.EXCHANGE_RATE_API_KEY
 import com.shahroze.currencyconvertorandroid.common.Constants.ExhangeRateParams.ACCESS_KEY
-import com.shahroze.currencyconvertorandroid.common.HttpMethodType
+import com.shahroze.currencyconvertorandroid.common.enums.HttpMethodType
 import okhttp3.Interceptor
 import okhttp3.Response
 

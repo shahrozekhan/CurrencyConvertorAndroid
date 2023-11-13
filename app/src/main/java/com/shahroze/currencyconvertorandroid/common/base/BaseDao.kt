@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.base
+package com.shahroze.currencyconvertorandroid.common.base
 
 import androidx.room.Delete
 import androidx.room.Insert

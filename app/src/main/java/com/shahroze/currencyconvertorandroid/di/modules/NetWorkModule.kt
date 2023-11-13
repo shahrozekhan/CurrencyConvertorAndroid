@@ -38,7 +38,6 @@ object NetWorkModule {
     }
 
     @Provides
-
     fun provideExchangeRateService(@ExChangeRateApi retrofit: Retrofit): ExchangeRateGateWay {
         return retrofit.create(ExchangeRateGateWay::class.java)
     }

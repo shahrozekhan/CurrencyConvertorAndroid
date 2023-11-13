@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.ui.theme
+package com.shahroze.currencyconvertorandroid.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

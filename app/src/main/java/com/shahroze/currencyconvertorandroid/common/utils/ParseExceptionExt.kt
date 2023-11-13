@@ -8,7 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.FileNotFoundException
 import javax.inject.Inject
 
-class ErrorParser @Inject constructor(@ApplicationContext private val context: Context) {
+class LocalExceptionParser @Inject constructor(@ApplicationContext private val context: Context) {
     fun logParseDisplayMessage(exception: Exception, className: String): String {
         Log.e(className, exception.message ?: exception.cause?.message ?: "")
         exception.printStackTrace()
