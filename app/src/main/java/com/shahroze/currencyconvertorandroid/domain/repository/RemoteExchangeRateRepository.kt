@@ -1,8 +1,10 @@
 package com.shahroze.currencyconvertorandroid.domain.repository
 
+import com.shahroze.currencyconvertorandroid.common.base.RemoteResource
 import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateResponseDto
+import kotlinx.coroutines.flow.Flow
 
 interface RemoteExchangeRateRepository {
-    suspend fun getExchangeRate(): ExchangeRateResponseDto
-    suspend fun getSymbols(): ExchangeRateResponseDto
+    fun getExchangeRate(): Flow<RemoteResource<ExchangeRateResponseDto>>
+    fun getSymbols(): Flow<RemoteResource<ExchangeRateResponseDto>>
 }

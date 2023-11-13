@@ -1,6 +1,6 @@
 *.iml
 .gradle
-/.idea/sonarlint
+/.idea/sonarlint/*
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -8,6 +8,7 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+
 .DS_Store
 /build
 /captures
@@ -52,6 +53,7 @@ captures/
 .idea/assetWizardSettings.xml
 .idea/dictionaries
 .idea/libraries
+.idea/misc.xml
 # Android Studio 3 in .gitignore file.
 .idea/caches
 .idea/modules.xml

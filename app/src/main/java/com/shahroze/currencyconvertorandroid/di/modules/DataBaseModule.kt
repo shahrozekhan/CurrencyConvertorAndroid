@@ -4,9 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import com.shahroze.currencyconvertorandroid.data.localdatasource.database.ExchangeRateDataBase
 import com.shahroze.currencyconvertorandroid.data.localdatasource.database.dao.ExchangeRateDao
-import com.shahroze.currencyconvertorandroid.data.remote.repository.RemoteExchangeRateRepositoryImpl
-import com.shahroze.currencyconvertorandroid.domain.repository.RemoteExchangeRateRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +13,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AppModule {
-    private val databaseName = "AppDB"
+object DataBaseModule {
+    private const val databaseName = "AppDB"
 
     @Provides
     @Singleton
@@ -27,7 +24,4 @@ abstract class AppModule {
     @Provides
     fun provideExchangeRateDao(exchangeRateDataBase: ExchangeRateDataBase): ExchangeRateDao =
         exchangeRateDataBase.exchangeRateDao()
-
-    @Binds
-    abstract fun bindExchangeRateRepository(remoteExchangeRateRepositoryImpl: RemoteExchangeRateRepositoryImpl): RemoteExchangeRateRepository
 }

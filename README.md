@@ -1,7 +1,15 @@
 # CurrencyConvertorAndroid
+
 Android Application for currency conversion.
 
+Task....
+# Sort by Ascending 
+It will make the searhing for currency more easy.
+Search for the currencies in the drop down.
+
+
 # Requirements:
+
 ● The app should use Jetpack Compose for UI development.
 ● The app should use a Currency Rates API to fetch the latest exchange rates. (Done)
 ● The app should allow users to select a base currency and one or more target currencies
@@ -18,6 +26,7 @@ app.
 ● The currency rat.s should be cached and only updated once a day.
 
 # Optional Requirements:
+
 ● The app can provide a historical exchange rate graph for the selected currencies.
 ● The app can allow users to save their favorite currency pairs for quick access.
 ● The app can include a currency calculator for simple calculations.
