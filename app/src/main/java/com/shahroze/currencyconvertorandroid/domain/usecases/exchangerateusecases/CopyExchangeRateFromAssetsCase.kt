@@ -4,10 +4,10 @@ import com.shahroze.currencyconvertorandroid.common.base.Resource
 import com.shahroze.currencyconvertorandroid.common.utils.buildExchangeRateListSortedByCurrency
 import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateResponseDto
 import com.shahroze.currencyconvertorandroid.data.localdatasource.asset.AssetFileDataSource
-import com.shahroze.currencyconvertorandroid.data.localdatasource.database.dao.ExchangeRateDao
 import com.shahroze.currencyconvertorandroid.data.localdatasource.preferences.AppPreferences
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
 import com.shahroze.currencyconvertorandroid.domain.model.toExchangeRateDto
+import com.shahroze.currencyconvertorandroid.domain.repository.DatabaseExchangeRateRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -18,7 +18,7 @@ import javax.inject.Inject
 //saves the time stamp to preferences and exchange rate from 'exchangerates.json' file to databases.
 class CopyExchangeRateFromAssetsCase @Inject constructor(
     private val fileDataSource: AssetFileDataSource,
-    private val exchangeRateDao: ExchangeRateDao,
+    private val databaseExchangeRateRepository: DatabaseExchangeRateRepository,
     private val appPreferences: AppPreferences
 ) {
     operator fun invoke(): Flow<Resource<List<ExchangeRate>>> {
@@ -35,7 +35,7 @@ class CopyExchangeRateFromAssetsCase @Inject constructor(
             } else if (exchangeRate is Resource.Success && symbols is Resource.Success) {
                 val listOfExchangeRate =
                     buildExchangeRateListSortedByCurrency(exchangeRate.data?.rates, symbols.data?.symbols)
-                exchangeRateDao.insertAll(listOfExchangeRate.map { domainDto -> domainDto.toExchangeRateDto() })
+                databaseExchangeRateRepository.insertExchangeRates(listOfExchangeRate.map { domainDto -> domainDto.toExchangeRateDto() })
                 appPreferences.timeStamp = exchangeRate.data?.timestamp.toString()
                 Resource.Success(listOfExchangeRate)
             } else {

@@ -1,6 +1,8 @@
 package com.shahroze.currencyconvertorandroid.di.modules
 
-import com.shahroze.currencyconvertorandroid.data.remote.repository.RemoteExchangeRateRepositoryImpl
+import com.shahroze.currencyconvertorandroid.data.repository.DatabaseExchangeRateRepositoryImpl
+import com.shahroze.currencyconvertorandroid.data.repository.RemoteExchangeRateRepositoryImpl
+import com.shahroze.currencyconvertorandroid.domain.repository.DatabaseExchangeRateRepository
 import com.shahroze.currencyconvertorandroid.domain.repository.RemoteExchangeRateRepository
 import com.shahroze.currencyconvertorandroid.domain.usecases.LoadExchangeRateUsesCase
 import com.shahroze.currencyconvertorandroid.domain.usecases.exchangerateusecases.CopyExchangeRateFromAssetsCase
@@ -11,6 +13,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -30,12 +33,27 @@ object AppModule {
         )
     }
 
+    @Provides
+    @IO
+    fun provideIODispatcher() = Dispatchers.IO
+
+    @Provides
+    @Default
+    fun provideDefaultDispatcher() = Dispatchers.Default
+
+    @Provides
+    @Main
+    fun provideMainDispatcher() = Dispatchers.Main
+
 }
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryProviderModule {
     @Binds
-    abstract fun bindExchangeRateRepository(remoteExchangeRateRepositoryImpl: RemoteExchangeRateRepositoryImpl): RemoteExchangeRateRepository
+    abstract fun bindRemoteExchangeRateRepository(remoteExchangeRateRepositoryImpl: RemoteExchangeRateRepositoryImpl): RemoteExchangeRateRepository
+
+    @Binds
+    abstract fun bindDatabaseExchangeRateRepository(databaseExchangeRateRepositoryImpl: DatabaseExchangeRateRepositoryImpl): DatabaseExchangeRateRepository
 
 }

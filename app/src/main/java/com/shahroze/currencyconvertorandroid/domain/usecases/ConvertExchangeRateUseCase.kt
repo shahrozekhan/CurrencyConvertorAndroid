@@ -1,7 +1,8 @@
 package com.shahroze.currencyconvertorandroid.domain.usecases
 
+import com.shahroze.currencyconvertorandroid.di.modules.IO
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -16,12 +17,14 @@ import javax.inject.Inject
     convertedValue = newRate * amount
 
  */
-class ConvertExchangeRateUseCase @Inject constructor() {
+class ConvertExchangeRateUseCase @Inject constructor(
+    @IO private val dispatcher: CoroutineDispatcher
+) {
     suspend operator fun invoke(
         amount: String,
         fromExchangeRate: ExchangeRate,
         toExchangeRateList: List<ExchangeRate>?
-    ): List<Pair<ExchangeRate, BigDecimal>> = withContext(Dispatchers.IO) {
+    ): List<Pair<ExchangeRate, BigDecimal>> = withContext(dispatcher) {
         buildList {
             toExchangeRateList?.forEach { exchangeRate ->
                 val newRate = (exchangeRate.rate / fromExchangeRate.rate).roundUpTwoDecimal()
