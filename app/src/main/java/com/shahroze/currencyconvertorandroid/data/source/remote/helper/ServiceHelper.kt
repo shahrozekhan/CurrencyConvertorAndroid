@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.remote.helper
+package com.shahroze.currencyconvertorandroid.data.source.remote.helper
 
 import com.shahroze.currencyconvertorandroid.common.base.RemoteResource
 import javax.inject.Inject

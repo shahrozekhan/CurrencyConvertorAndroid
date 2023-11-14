@@ -1,9 +1,9 @@
 package com.shahroze.currencyconvertorandroid.di.modules
 
-import com.shahroze.currencyconvertorandroid.data.repository.DatabaseExchangeRateRepositoryImpl
-import com.shahroze.currencyconvertorandroid.data.repository.RemoteExchangeRateRepositoryImpl
-import com.shahroze.currencyconvertorandroid.domain.repository.DatabaseExchangeRateRepository
-import com.shahroze.currencyconvertorandroid.domain.repository.RemoteExchangeRateRepository
+import com.shahroze.currencyconvertorandroid.data.repository.ExchangeRateRepositoryImpl
+import com.shahroze.currencyconvertorandroid.data.repository.FavoriteExchangeRateRepositoryImpl
+import com.shahroze.currencyconvertorandroid.domain.repository.ExchangeRateRepository
+import com.shahroze.currencyconvertorandroid.domain.repository.FavoriteExchangeRateRepository
 import com.shahroze.currencyconvertorandroid.domain.usecases.LoadExchangeRateUsesCase
 import com.shahroze.currencyconvertorandroid.domain.usecases.exchangerateusecases.CopyExchangeRateFromAssetsCase
 import com.shahroze.currencyconvertorandroid.domain.usecases.exchangerateusecases.GetExchangeRateFromAPIUseCase
@@ -51,9 +51,9 @@ object AppModule {
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryProviderModule {
     @Binds
-    abstract fun bindRemoteExchangeRateRepository(remoteExchangeRateRepositoryImpl: RemoteExchangeRateRepositoryImpl): RemoteExchangeRateRepository
+    abstract fun bindRemoteExchangeRateRepository(remoteExchangeRateRepositoryImpl: ExchangeRateRepositoryImpl): ExchangeRateRepository
 
     @Binds
-    abstract fun bindDatabaseExchangeRateRepository(databaseExchangeRateRepositoryImpl: DatabaseExchangeRateRepositoryImpl): DatabaseExchangeRateRepository
+    abstract fun bindDatabaseExchangeRateRepository(databaseExchangeRateRepositoryImpl: FavoriteExchangeRateRepositoryImpl): FavoriteExchangeRateRepository
 
 }

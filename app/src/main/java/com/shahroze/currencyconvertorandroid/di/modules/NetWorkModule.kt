@@ -1,7 +1,7 @@
 package com.shahroze.currencyconvertorandroid.di.modules
 
 import com.shahroze.currencyconvertorandroid.BuildConfig
-import com.shahroze.currencyconvertorandroid.data.remote.getway.ExchangeRateGateWay
+import com.shahroze.currencyconvertorandroid.data.source.remote.getway.ExchangeRateGateWay
 import com.shahroze.currencyconvertorandroid.di.Interceptor.ExchangeRateApiInterceptor
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.remote.helper
+package com.shahroze.currencyconvertorandroid.data.source.remote.helper
 
 import android.content.Context
 import com.google.gson.Gson
@@ -23,8 +23,9 @@ class RemoteErrorParser @Inject constructor(@ApplicationContext private val cont
                 RemoteResource.ResourceError.GenericError(
                     ErrorResponse(
                         error = Error(
-                            0,
-                            throwable.message ?: ""
+                            code = 0,
+                            info = throwable.message ?: "",
+                            message = ""
                         ), success = false
                     ), throwable
                 )
@@ -45,9 +46,12 @@ class RemoteErrorParser @Inject constructor(@ApplicationContext private val cont
         return when (errorResource) {
             is RemoteResource.ResourceError.GenericError -> {
                 errorResource.error?.let {
-                    errorResource.error.error.info
+                    if (errorResource.error.error.message.isNotEmpty()) {
+                        return errorResource.error.error.message
+                    }
+                    return errorResource.error.error.info
                 } ?: run {
-                    context.getString(R.string.generic_error)
+                    return context.getString(R.string.generic_error)
                 }
             }
 

@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.remote.getway
+package com.shahroze.currencyconvertorandroid.data.source.remote.getway
 
 import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateResponseDto
 import retrofit2.http.GET

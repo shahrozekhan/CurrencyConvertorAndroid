@@ -1,11 +1,12 @@
 package com.shahroze.currencyconvertorandroid.domain.usecases
 
+import com.shahroze.currencyconvertorandroid.common.utils.roundUp
+import com.shahroze.currencyconvertorandroid.common.utils.roundUpTwoDecimal
 import com.shahroze.currencyconvertorandroid.di.modules.IO
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.math.BigDecimal
-import java.math.RoundingMode
 import javax.inject.Inject
 
 /*
@@ -43,6 +44,3 @@ class ConvertExchangeRateUseCase @Inject constructor(
     }
 
 }
-
-fun BigDecimal.roundUp(place: Int): BigDecimal = this.setScale(place, RoundingMode.UP)
-fun Double.roundUpTwoDecimal(): Double = String.format("%.2f", this).toDouble()

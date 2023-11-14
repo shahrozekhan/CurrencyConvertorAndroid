@@ -1,34 +1,36 @@
 package com.shahroze.currencyconvertorandroid.common.utils
 
-import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
+import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateDto
 
-fun buildExchangeRateListSortedByCurrency(
+fun buildExchangeRateDtoListSortedByCurrency(
     rates: HashMap<String, Double>?,
     symbols: HashMap<String, String>?
-): List<ExchangeRate> = buildList {
+): List<ExchangeRateDto> = buildList {
     rates?.onEach { exchangeRateDto ->
         symbols?.get(exchangeRateDto.key)?.let {
             add(
-                ExchangeRate(
-                    exchangeRateDto.key,
+                ExchangeRateDto(
+                    currency = exchangeRateDto.key,
                     currencyName = it,
-                    exchangeRateDto.value
+                    rate = exchangeRateDto.value,
+                    selected = false
                 )
             )
         }
     }
-}.sortedBy { exchangeRate -> exchangeRate.currency }
+}
 
-fun buildExchangeRateListSortedByCurrency(
+fun buildExchangeRateDtoListSortedByCurrency(
     rates: HashMap<String, Double>?,
-): List<ExchangeRate> = buildList {
+): List<ExchangeRateDto> = buildList {
     rates?.onEach { exchangeRateDto ->
         add(
-            ExchangeRate(
-                exchangeRateDto.key,
+            ExchangeRateDto(
+                currency = exchangeRateDto.key,
                 currencyName = "",
-                exchangeRateDto.value
+                rate = exchangeRateDto.value,
+                selected = false
             )
         )
     }
-}.sortedBy { exchangeRate -> exchangeRate.currency }
+}

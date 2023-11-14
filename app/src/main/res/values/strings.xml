@@ -14,5 +14,5 @@
     <string name="select_more_currency">Select more currencies!</string>
     <string name="rate">Rate</string>
     <string name="generic_error">Please refresh and try again!</string>
-    <string name="no_network">Couldn\'t reach provide. Check your internet connection!</string>
+    <string name="no_network">Check your internet connection!</string>
 </resources>

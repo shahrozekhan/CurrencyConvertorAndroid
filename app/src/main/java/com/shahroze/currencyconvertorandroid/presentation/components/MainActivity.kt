@@ -7,7 +7,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.shahroze.currencyconvertorandroid.presentation.components.currency.ExchangeRateScreen
+import com.shahroze.currencyconvertorandroid.presentation.components.conversionscreen.ExchangeRateScreen
 import com.shahroze.currencyconvertorandroid.presentation.components.navigation.Screen
 import com.shahroze.currencyconvertorandroid.presentation.theme.CurrencyConvertorAndroidTheme
 import dagger.hilt.android.AndroidEntryPoint

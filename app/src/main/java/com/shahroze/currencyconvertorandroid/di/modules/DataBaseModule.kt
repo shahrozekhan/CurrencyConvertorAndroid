@@ -2,8 +2,8 @@ package com.shahroze.currencyconvertorandroid.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import com.shahroze.currencyconvertorandroid.data.localdatasource.database.ExchangeRateDataBase
-import com.shahroze.currencyconvertorandroid.data.localdatasource.database.dao.ExchangeRateDao
+import com.shahroze.currencyconvertorandroid.data.source.local.database.ExchangeRateDataBase
+import com.shahroze.currencyconvertorandroid.data.source.local.database.dao.ExchangeRateDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
