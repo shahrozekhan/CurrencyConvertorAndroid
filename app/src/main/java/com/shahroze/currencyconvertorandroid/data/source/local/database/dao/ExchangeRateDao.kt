@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.localdatasource.database.dao
+package com.shahroze.currencyconvertorandroid.data.source.local.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query

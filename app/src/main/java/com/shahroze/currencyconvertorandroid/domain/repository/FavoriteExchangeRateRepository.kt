@@ -2,11 +2,7 @@ package com.shahroze.currencyconvertorandroid.domain.repository
 
 import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateDto
 
-interface DatabaseExchangeRateRepository {
-
-    suspend fun insertExchangeRates(listOfExchangeRate: List<ExchangeRateDto>)
-
-    suspend fun getExchangeRates(): List<ExchangeRateDto>
+interface FavoriteExchangeRateRepository {
 
     suspend fun getFavoriteExchangeRates(): List<ExchangeRateDto>
 

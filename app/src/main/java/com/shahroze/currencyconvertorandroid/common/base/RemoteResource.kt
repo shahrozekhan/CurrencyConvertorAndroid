@@ -1,6 +1,6 @@
 package com.shahroze.currencyconvertorandroid.common.base
 
-import com.shahroze.currencyconvertorandroid.data.remote.helper.ErrorResponse
+import com.shahroze.currencyconvertorandroid.data.source.remote.helper.ErrorResponse
 
 
 sealed class RemoteResource<out T> {

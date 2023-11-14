@@ -18,7 +18,8 @@ class LocalExceptionParser @Inject constructor(@ApplicationContext private val c
             }
 
             is FileNotFoundException -> {
-                context.getString(R.string.file_not_error_occurred)
+                context.getString(R.string.file_not_error_occurred) + " " + (exception.message
+                    ?: "")
             }
 
             else -> {

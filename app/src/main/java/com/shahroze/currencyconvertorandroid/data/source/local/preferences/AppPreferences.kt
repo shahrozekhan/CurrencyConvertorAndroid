@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.localdatasource.preferences
+package com.shahroze.currencyconvertorandroid.data.source.local.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,8 +6,8 @@ import com.shahroze.currencyconvertorandroid.common.Constants.ExchangeRateConsta
 import com.shahroze.currencyconvertorandroid.common.utils.empty
 import com.shahroze.currencyconvertorandroid.common.utils.get
 import com.shahroze.currencyconvertorandroid.common.utils.set
-import com.shahroze.currencyconvertorandroid.data.localdatasource.preferences.PreferenceKeys.BASE_CURRENCY
-import com.shahroze.currencyconvertorandroid.data.localdatasource.preferences.PreferenceKeys.TIME_STAMP
+import com.shahroze.currencyconvertorandroid.data.source.local.preferences.PreferenceKeys.BASE_CURRENCY
+import com.shahroze.currencyconvertorandroid.data.source.local.preferences.PreferenceKeys.TIME_STAMP
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton

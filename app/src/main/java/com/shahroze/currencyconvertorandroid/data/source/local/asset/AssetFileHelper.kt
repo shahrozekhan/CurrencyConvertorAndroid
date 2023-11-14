@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.data.localdatasource.asset
+package com.shahroze.currencyconvertorandroid.data.source.local.asset
 
 import android.content.Context
 import com.google.gson.Gson
@@ -16,7 +16,7 @@ import java.io.InputStream
 import java.nio.charset.Charset
 import javax.inject.Inject
 
-class AssetFileDataSource @Inject constructor(
+class AssetFileHelper @Inject constructor(
     @ApplicationContext val context: Context,
     val errorParser: LocalExceptionParser
 ) {
@@ -46,7 +46,7 @@ class AssetFileDataSource @Inject constructor(
                     Resource.Error(
                         errorParser.logParseDisplayMessage(
                             exception,
-                            this@AssetFileDataSource.javaClass.name
+                            this@AssetFileHelper.javaClass.name
                         )
                     )
                 )
