@@ -11,4 +11,4 @@ fun String.containsDigitsAndDecimalOnly(): Boolean {
 }
 
 fun BigDecimal.roundUp(place: Int): BigDecimal = this.setScale(place, RoundingMode.UP)
-fun Double.roundUpTwoDecimal(): Double = String.format("%.2f", this).toDouble()
+fun Double.roundUpFiveDecimal(): Double = String.format("%.5f", this).toDouble()

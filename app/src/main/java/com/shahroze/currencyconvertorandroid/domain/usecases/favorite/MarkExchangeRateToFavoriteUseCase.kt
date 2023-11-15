@@ -1,4 +1,4 @@
-package com.shahroze.currencyconvertorandroid.domain.usecases
+package com.shahroze.currencyconvertorandroid.domain.usecases.favorite
 
 import com.shahroze.currencyconvertorandroid.di.modules.IO
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate

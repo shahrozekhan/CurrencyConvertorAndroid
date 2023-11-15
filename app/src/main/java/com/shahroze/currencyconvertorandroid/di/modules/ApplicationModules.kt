@@ -4,10 +4,6 @@ import com.shahroze.currencyconvertorandroid.data.repository.ExchangeRateReposit
 import com.shahroze.currencyconvertorandroid.data.repository.FavoriteExchangeRateRepositoryImpl
 import com.shahroze.currencyconvertorandroid.domain.repository.ExchangeRateRepository
 import com.shahroze.currencyconvertorandroid.domain.repository.FavoriteExchangeRateRepository
-import com.shahroze.currencyconvertorandroid.domain.usecases.LoadExchangeRateUsesCase
-import com.shahroze.currencyconvertorandroid.domain.usecases.exchangerateusecases.CopyExchangeRateFromAssetsCase
-import com.shahroze.currencyconvertorandroid.domain.usecases.exchangerateusecases.GetExchangeRateFromAPIUseCase
-import com.shahroze.currencyconvertorandroid.domain.usecases.exchangerateusecases.GetExchangeRateFromDataBase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -18,20 +14,6 @@ import kotlinx.coroutines.Dispatchers
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-    @Provides
-    fun provideLoadExchangeRatesUseCases(
-        assetExchangeRate: CopyExchangeRateFromAssetsCase,
-        remoteExchangeRate: GetExchangeRateFromAPIUseCase,
-        databaseExchangeRate: GetExchangeRateFromDataBase
-
-    ): LoadExchangeRateUsesCase {
-        return LoadExchangeRateUsesCase(
-            assetExchangeRate = assetExchangeRate,
-            remoteExchangeRate = remoteExchangeRate,
-            databaseExchangeRate = databaseExchangeRate
-        )
-    }
 
     @Provides
     @IO

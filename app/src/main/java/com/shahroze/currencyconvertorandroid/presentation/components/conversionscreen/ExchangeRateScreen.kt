@@ -332,11 +332,12 @@ fun FlowRow(
                 val currencyName =
                     if (item.currencyName.isNotEmpty()) "(${item.currencyName})" else String.empty
                 Text(
-                    modifier = Modifier.padding(8.dp),
+                    modifier = Modifier.weight(9f).padding(8.dp),
                     text = "${item.currency} " + currencyName
                 )
                 ComposeIcon(
                     modifier = Modifier
+                        .weight(1f)
                         .padding(end = 8.dp)
                         .size(20.dp)
                         .clickable {
