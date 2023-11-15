@@ -20,7 +20,7 @@ class AssetFileHelper @Inject constructor(
     @ApplicationContext val context: Context,
     val errorParser: LocalExceptionParser
 ) {
-    inline fun <reified T : Any?> loadJsonFromAssets(
+    inline fun <reified T : Any?> loadFlowJsonFromAssets(
         fileName: String,
     ): Flow<Resource<T>> =
         flow {
@@ -54,5 +54,36 @@ class AssetFileHelper @Inject constructor(
         }.onStart {
             emit(Resource.Loading())
         }.flowOn(Dispatchers.IO)
+
+    inline fun <reified T : Any?> loadJsonFromAssets(
+        fileName: String
+    ): Resource<T> {
+        try {
+
+            val assetFile: String?
+
+            val inputStream: InputStream = context.assets.open(fileName)
+            val size = inputStream.available()
+            val buffer = ByteArray(size)
+            inputStream.read(buffer)
+            inputStream.close()
+
+            assetFile = String(buffer, Charset.forName(Constants.UTF_8))
+
+            val exchangeRateJson =
+                Gson().fromJson<T>(assetFile, object : TypeToken<T>() {}.type)
+
+            return Resource.Success(exchangeRateJson)
+
+        } catch (exception: Exception) {
+
+            return Resource.Error(
+                errorParser.logParseDisplayMessage(
+                    exception,
+                    this@AssetFileHelper.javaClass.name
+                )
+            )
+        }
+    }
 
 }

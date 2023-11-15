@@ -6,12 +6,15 @@ import com.shahroze.currencyconvertorandroid.data.dto.ExchangeRateDto
 import kotlinx.coroutines.flow.Flow
 
 interface ExchangeRateRepository {
-    fun getExchangeRateFromRemote(): Flow<RemoteResource<List<ExchangeRateDto>>>
+    fun getFlowExchangeRateFromRemote(): Flow<RemoteResource<List<ExchangeRateDto>>>
+
+    suspend fun getExchangeRateFromRemote(): RemoteResource<List<ExchangeRateDto>>
 
     suspend fun insertExchangeRatesToDatabase(listOfExchangeRate: List<ExchangeRateDto>)
 
     suspend fun getExchangeRatesFromDatabase(): List<ExchangeRateDto>
 
-    fun getExchangeRatesFromAssets(): Flow<Resource<List<ExchangeRateDto>>>
+    fun getFlowExchangeRatesFromAssets(): Flow<Resource<List<ExchangeRateDto>>>
 
+    suspend fun getExchangeRatesFromAssets(): Resource<List<ExchangeRateDto>>
 }

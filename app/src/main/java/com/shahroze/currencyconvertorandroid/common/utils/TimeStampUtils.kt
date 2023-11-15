@@ -6,7 +6,7 @@ import java.util.*
 
 object TimeStampUtils {
     const val timeFormat = "yyyy-MM-dd"
-    fun isToday(timeStamp: String): TimeStampState {
+    fun getTimeStampEnum(timeStamp: String): TimeStampState {
 
         val format = SimpleDateFormat(timeFormat)
         val today = Date()

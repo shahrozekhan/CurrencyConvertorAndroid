@@ -31,7 +31,7 @@ class ExchangeRateRepositoryImpl @Inject constructor(
     private val fileDataSource: AssetFileHelper,
     private val appPreferences: AppPreferences
 ) : ExchangeRateRepository {
-    override fun getExchangeRateFromRemote() =
+    override fun getFlowExchangeRateFromRemote() =
         getExchangeRate()
             .zip(getSymbols()) { exchangeRateRemoteResource, symbolsRemoteResource ->
                 when (exchangeRateRemoteResource) {
@@ -64,6 +64,65 @@ class ExchangeRateRepositoryImpl @Inject constructor(
 
             }
 
+    override suspend fun getExchangeRateFromRemote(): RemoteResource<List<ExchangeRateDto>> {
+        val exchangeRateRemoteResource =
+            serviceHelper.call { exchangeRateGateWay.getExchangeRate() }
+        val symbolsRemoteResource = serviceHelper.call { exchangeRateGateWay.getSymbols() }
+        when (exchangeRateRemoteResource) {
+            is RemoteResource.Success -> {
+                val listOfExchangeRate: List<ExchangeRateDto> =
+                    when (symbolsRemoteResource) {
+                        is RemoteResource.Success -> {
+                            buildExchangeRateDtoListSortedByCurrency(
+                                exchangeRateRemoteResource.data.rates,
+                                symbolsRemoteResource.data.symbols
+                            )
+                        }
+
+                        is RemoteResource.ResourceError -> {
+                            buildExchangeRateDtoListSortedByCurrency(
+                                exchangeRateRemoteResource.data.rates
+                            )
+                        }
+                    }
+                insertExchangeRatesToDatabase(listOfExchangeRate)
+                appPreferences.timeStamp =
+                    exchangeRateRemoteResource.data.timestamp.toString()
+                return RemoteResource.Success(listOfExchangeRate)
+            }
+
+            is RemoteResource.ResourceError -> {
+                return exchangeRateRemoteResource
+            }
+        }
+    }
+
+    override suspend fun getExchangeRatesFromAssets(): Resource<List<ExchangeRateDto>> {
+        val exchangeRate = fileDataSource.loadJsonFromAssets<ExchangeRateResponseDto>(
+            "exchangerate.json",
+        )
+        val symbols = fileDataSource.loadJsonFromAssets<ExchangeRateResponseDto>(
+            "symbols.json",
+        )
+        return if (exchangeRate is Resource.Success && symbols is Resource.Success) {
+            val listOfExchangeRate =
+                buildExchangeRateDtoListSortedByCurrency(
+                    exchangeRate.data?.rates,
+                    symbols.data?.symbols
+                )
+            insertExchangeRatesToDatabase(listOfExchangeRate)
+            appPreferences.timeStamp = exchangeRate.data?.timestamp.toString()
+            Resource.Success(listOfExchangeRate)
+        } else {
+            if (exchangeRate is Resource.Error)
+                Resource.Error(exchangeRate.message)
+            else {
+                Resource.Error(symbols.message)
+            }
+        }
+
+    }
+
     private fun getExchangeRate() =
         flow {
             emit(serviceHelper.call { exchangeRateGateWay.getExchangeRate() })
@@ -89,11 +148,11 @@ class ExchangeRateRepositoryImpl @Inject constructor(
             exchangeRateDao.getExchangeRates()
         }
 
-    override fun getExchangeRatesFromAssets(): Flow<Resource<List<ExchangeRateDto>>> {
-        return fileDataSource.loadJsonFromAssets<ExchangeRateResponseDto>(
+    override fun getFlowExchangeRatesFromAssets(): Flow<Resource<List<ExchangeRateDto>>> {
+        return fileDataSource.loadFlowJsonFromAssets<ExchangeRateResponseDto>(
             "exchangerate.json",
         ).zip(
-            fileDataSource.loadJsonFromAssets<ExchangeRateResponseDto>(
+            fileDataSource.loadFlowJsonFromAssets<ExchangeRateResponseDto>(
                 "symbols.json",
             )
         ) { exchangeRate, symbols ->

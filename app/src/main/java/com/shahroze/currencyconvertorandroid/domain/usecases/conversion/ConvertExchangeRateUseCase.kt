@@ -1,7 +1,7 @@
-package com.shahroze.currencyconvertorandroid.domain.usecases
+package com.shahroze.currencyconvertorandroid.domain.usecases.conversion
 
 import com.shahroze.currencyconvertorandroid.common.utils.roundUp
-import com.shahroze.currencyconvertorandroid.common.utils.roundUpTwoDecimal
+import com.shahroze.currencyconvertorandroid.common.utils.roundUpFiveDecimal
 import com.shahroze.currencyconvertorandroid.di.modules.IO
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
 import kotlinx.coroutines.CoroutineDispatcher
@@ -28,7 +28,7 @@ class ConvertExchangeRateUseCase @Inject constructor(
     ): List<Pair<ExchangeRate, BigDecimal>> = withContext(dispatcher) {
         buildList {
             toExchangeRateList?.forEach { exchangeRate ->
-                val newRate = (exchangeRate.rate / fromExchangeRate.rate).roundUpTwoDecimal()
+                val newRate = (exchangeRate.rate / fromExchangeRate.rate).roundUpFiveDecimal()
 
                 val convertedExchangeRate =
                     ExchangeRate(exchangeRate.currency, exchangeRate.currencyName, newRate)
