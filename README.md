@@ -1,12 +1,26 @@
-# CurrencyConvertorAndroid
+# **Currency Conversion Application**
+This is currency conversion application which built upon the concept of clean MVVM architecture using Android Architectural Components. Following Restful webservice has been used for API http://api.exchangeratesapi.io
 
-Android Application for currency conversion.
+It has been built using the following JetPack Components:
+● Jet Pack Compose.
+● Hilt.
+● Navigation Compose.
+● Room.
 
-Task....
-# Sort by Ascending 
-It will make the searhing for currency more easy.
-Search for the currencies in the drop down.
+The application has been built using clean architecture following layer:
 
+● Data.
+● Domain.
+● Presentation.
+
+**Data**
+It is responsible for providing data to domain layer. It contains respositories for providing data from API and Database layer.
+
+**Domain**
+It is responsible for defining user actions, which are the usecases. 
+
+**Presentation**
+Presentation layer business logic for the actions that user want to perform.
 
 # Requirements:
 
@@ -32,3 +46,5 @@ app.
 ● The app can include a currency calculator for simple calculations.
 ● The app can provide a widget for quick access to the latest exchange rates.
 ● KMM Implementation for the app.
+
+
