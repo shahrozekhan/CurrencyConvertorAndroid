@@ -1,3 +1,7 @@
+Please add the following to you local.properties file.
+EXCHANGE_RATE_API_KEY = 4355559f6761df5c780bb287da4a93e5
+BASE_URL = http://api.exchangeratesapi.io
+
 # **Currency Conversion Application**
 This is currency conversion application which built upon the concept of clean MVVM architecture using Android Architectural Components. Following Restful webservice has been used for API http://api.exchangeratesapi.io
 
