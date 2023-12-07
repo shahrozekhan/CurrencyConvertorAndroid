@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">CurrencyConvertorAndroid</string>
+    <string name="unexpected_error_occurred">An unexpected error occurred!</string>
+    <string name="file_not_error_occurred">File not found!</string>
+    <string name="unable_to_parse_error_occurred">Unable to parse file!</string>
+    <string name="currency">Exchange Rate\n</string>
+    <string name="trend">Currency Trends</string>
+    <string name="title_currency_convertor">Currency Convertor\n</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="amount">Amount</string>
+    <string name="convert">Convert</string>
+    <string name="select_currency">Select Currency</string>
+    <string name="select_more_currency">Select more currencies!</string>
+    <string name="rate">Rate</string>
+    <string name="generic_error">Please refresh and try again!</string>
+    <string name="no_network">Check your internet connection!</string>
+</resources>

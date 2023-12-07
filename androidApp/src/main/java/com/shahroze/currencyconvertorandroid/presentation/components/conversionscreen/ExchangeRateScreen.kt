@@ -46,6 +46,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -60,7 +61,7 @@ import com.shahroze.currencyconvertorandroid.common.view.ComposeIcon
 import com.shahroze.currencyconvertorandroid.common.view.HeadingMedium
 import com.shahroze.currencyconvertorandroid.common.view.VerticalDivider
 import com.shahroze.currencyconvertorandroid.domain.model.ExchangeRate
-import com.shahroze.currencyconvertorandroid.presentation.theme.Purple80
+import com.shahroze.shared.theme.Purple80
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
@@ -204,11 +205,13 @@ fun ExchangeRateScreen() {
                                 .fillMaxWidth()
                                 .background(Color.LightGray),
                             label = {
-                                Text(stringResource(id = R.string.amount))
+                                Text(
+                                    stringResource(id = R.string.amount)
+                                )
                             },
+                            textStyle = TextStyle(color = Color.Black),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            colors = TextFieldDefaults.textFieldColors(
-                                textColor = Color.Black,
+                            colors = TextFieldDefaults.colors(
                                 disabledTextColor = Color.Transparent,
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -332,7 +335,9 @@ fun FlowRow(
                 val currencyName =
                     if (item.currencyName.isNotEmpty()) "(${item.currencyName})" else String.empty
                 Text(
-                    modifier = Modifier.weight(9f).padding(8.dp),
+                    modifier = Modifier
+                        .weight(9f)
+                        .padding(8.dp),
                     text = "${item.currency} " + currencyName
                 )
                 ComposeIcon(

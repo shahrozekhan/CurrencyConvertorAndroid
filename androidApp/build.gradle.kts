@@ -3,10 +3,10 @@ import java.util.Properties
 
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.kotlinAndroidDaggerHilt)
 }
 
 android {
@@ -67,15 +67,15 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    kapt {
-        correctErrorTypes = true
-        useBuildCache = true
-    }
+//    kapt {
+//        correctErrorTypes = true
+//        useBuildCache = true
+//    }
 }
 
 dependencies {
@@ -104,7 +104,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     //Retrofit..
     implementation(libs.retrofit)
@@ -113,7 +113,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     // Kotlin Extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)

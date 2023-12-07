@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 @Keep
 data class ExchangeRateResponseDto(
-    @SerializedName("base")
+    @SerializedName("MR/base")
     val base: String,
     @SerializedName("date")
     val date: String,

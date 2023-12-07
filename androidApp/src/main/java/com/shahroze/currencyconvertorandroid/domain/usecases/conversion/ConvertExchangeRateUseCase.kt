@@ -34,10 +34,9 @@ class ConvertExchangeRateUseCase @Inject constructor(
                     ExchangeRate(exchangeRate.currency, exchangeRate.currencyName, newRate)
 
                 add(
-                    Pair(
-                        convertedExchangeRate,
-                        amount.toBigDecimal().multiply(BigDecimal(newRate)).roundUp(2)
-                    )
+                    convertedExchangeRate to amount.toBigDecimal().multiply(BigDecimal(newRate))
+                        .roundUp(2)
+
                 )
             }
         }

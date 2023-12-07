@@ -14,6 +14,7 @@
 		1A3E1F372B0E072600EC1137 /* iosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3E1F362B0E072600EC1137 /* iosAppTests.swift */; };
 		1A3E1F412B0E072600EC1137 /* iosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3E1F402B0E072600EC1137 /* iosAppUITests.swift */; };
 		1A3E1F432B0E072600EC1137 /* iosAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3E1F422B0E072600EC1137 /* iosAppUITestsLaunchTests.swift */; };
+		1A40CF0E2B123E2400347600 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A40CF0D2B123E2400347600 /* ComposeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,9 @@
 		1A3E1F3C2B0E072600EC1137 /* iosAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A3E1F402B0E072600EC1137 /* iosAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppUITests.swift; sourceTree = "<group>"; };
 		1A3E1F422B0E072600EC1137 /* iosAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1A40CF0D2B123E2400347600 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
+		1A40CF132B132F9A00347600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1A40CF142B132FE300347600 /* font_convergence.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font_convergence.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +98,13 @@
 		1A3E1F242B0E072500EC1137 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				1A40CF142B132FE300347600 /* font_convergence.ttf */,
+				1A40CF132B132F9A00347600 /* Info.plist */,
 				1A3E1F252B0E072500EC1137 /* iosAppApp.swift */,
 				1A3E1F272B0E072500EC1137 /* ContentView.swift */,
 				1A3E1F292B0E072600EC1137 /* Assets.xcassets */,
 				1A3E1F2B2B0E072600EC1137 /* Preview Content */,
+				1A40CF0D2B123E2400347600 /* ComposeView.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -279,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A40CF0E2B123E2400347600 /* ComposeView.swift in Sources */,
 				1A3E1F282B0E072500EC1137 /* ContentView.swift in Sources */,
 				1A3E1F262B0E072500EC1137 /* iosAppApp.swift in Sources */,
 			);
@@ -442,6 +450,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -476,6 +485,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
